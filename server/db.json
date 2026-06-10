@@ -1,0 +1,142 @@
+{
+  "problems": [
+    {
+      "_id": "seed-1",
+      "title": "Severe Water Logging near Central Market Gate 2",
+      "description": "The road is flooded with knee-deep water after the heavy rain. Vehicles are stuck and pedestrians are unable to cross. Needs immediate local municipality attention or drainage support.",
+      "category": "Emergency",
+      "location": {
+        "lat": 28.6139,
+        "lng": 77.209
+      },
+      "status": "Active",
+      "timestamp": "2026-06-04T02:33:01.123Z",
+      "upvotes": 8,
+      "author": "Dev Rawat",
+      "solutions": [
+        {
+          "id": "sol-1-1",
+          "author": "Vikram Singh",
+          "text": "Avoid taking the Gate 2 route. The traffic police has diverted cars through the flyover bypass.",
+          "timestamp": "2026-06-04T03:03:01.123Z",
+          "upvotes": 4
+        },
+        {
+          "id": "sol-1-2",
+          "author": "Helpingo AI Agent",
+          "text": "🚨 Emergency Water Logging Protocol: \n1. Do not wade through floodwaters as they might be electrically charged or contaminated.\n2. We have logged this report to the municipal helpline (#44921).\n3. Use the flyover bypass route.",
+          "timestamp": "2026-06-04T02:45:01.123Z",
+          "upvotes": 9,
+          "isAI": true
+        }
+      ]
+    },
+    {
+      "_id": "seed-2",
+      "title": "Looking for volunteer tutors for local orphanage education camp",
+      "description": "We are organizing a 2-week basic science & mathematics study camp for kids at the Asha Children's Home. Looking for high school/college students who can volunteer 2 hours a day.",
+      "category": "NGO Assistance",
+      "location": {
+        "lat": 28.625,
+        "lng": 77.22
+      },
+      "status": "Active",
+      "timestamp": "2026-06-03T22:33:01.123Z",
+      "upvotes": 12,
+      "author": "Neha Sharma",
+      "solutions": [
+        {
+          "id": "sol-2-1",
+          "author": "Neha Sharma",
+          "text": "I am a college biology major. I would love to volunteer for the science sessions! Please let me know the contact process.",
+          "timestamp": "2026-06-04T00:33:01.123Z",
+          "upvotes": 5
+        }
+      ]
+    },
+    {
+      "_id": "seed-3",
+      "title": "Lost my folder containing academic certificates near Central Library",
+      "description": "I lost a blue plastic folder containing my 10th and 12th board certificates and college transcripts. Probably dropped it around the parking lot or cafeteria. Extremely urgent!",
+      "category": "Student Support",
+      "location": {
+        "lat": 28.598,
+        "lng": 77.195
+      },
+      "status": "Active",
+      "timestamp": "2026-06-03T16:33:01.123Z",
+      "upvotes": 3,
+      "author": "Vikram Singh",
+      "solutions": [
+        {
+          "id": "sol-3-1",
+          "author": "Rajesh Kumar",
+          "text": "Check with the Lost & Found desk inside the main library lobby. They keep items found in the cafeteria there.",
+          "timestamp": "2026-06-03T20:33:01.123Z",
+          "upvotes": 2
+        }
+      ]
+    },
+    {
+      "_id": "seed-4",
+      "title": "High voltage electricity line sparking continuously",
+      "description": "The overhead cable near sector 4 crossing is sparking badly due to a tree branch leaning on it. Risk of fire or short circuit. Electric board needs to trim the tree branch and fix the wire.",
+      "category": "Emergency",
+      "location": {
+        "lat": 28.63,
+        "lng": 77.25
+      },
+      "status": "Resolved",
+      "timestamp": "2026-06-03T04:33:01.123Z",
+      "upvotes": 15,
+      "author": "Dev Rawat",
+      "solutions": [
+        {
+          "id": "sol-4-1",
+          "author": "Electric Grid Officer",
+          "text": "Line has been shut down, branches cleared, and wire insulated. Status marked resolved.",
+          "timestamp": "2026-06-03T06:33:01.123Z",
+          "upvotes": 14
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "username": "Vikram Singh",
+      "email": "vikram@helpingo.com",
+      "password": "password123",
+      "bio": "Local volunteer and civil engineer. Passionate about urban cleanup projects and structural safety.",
+      "joinedDate": "2026-05-05T04:33:01.122Z",
+      "status": "online",
+      "avatarSeed": "Vikram"
+    },
+    {
+      "username": "Neha Sharma",
+      "email": "neha@helpingo.com",
+      "password": "password123",
+      "bio": "College student majoring in biology. Happy to tutor kids and help out in NGOs.",
+      "joinedDate": "2026-05-20T04:33:01.123Z",
+      "status": "away",
+      "avatarSeed": "Neha"
+    },
+    {
+      "username": "Dev Rawat",
+      "email": "dev@helpingo.com",
+      "password": "password123",
+      "bio": "Road inspector and emergency responder. Always on the move.",
+      "joinedDate": "2026-04-25T04:33:01.123Z",
+      "status": "offline",
+      "avatarSeed": "Dev"
+    },
+    {
+      "username": "Test User",
+      "email": "test@example.com",
+      "password": "password123",
+      "bio": "Test volunteer bio.",
+      "joinedDate": "2026-06-04T04:36:43.634Z",
+      "status": "online",
+      "avatarSeed": "Test User"
+    }
+  ]
+}
