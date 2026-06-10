@@ -3,6 +3,8 @@ import {
   User, Calendar, Award, MessageSquare, AlertCircle, 
   CheckCircle2, Edit2, Save, MapPin, Activity, Clock 
 } from 'lucide-react';
+import { API_BASE_URL } from '../config';
+
 
 const Dashboard = ({ username, onResolveProblem }) => {
   const [stats, setStats] = useState(null);
@@ -15,7 +17,7 @@ const Dashboard = ({ username, onResolveProblem }) => {
   const fetchStats = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${username}/stats`);
+      const response = await fetch(`${API_BASE_URL}/users/${username}/stats`);
       if (response.ok) {
         const data = await response.json();
         setStats(data);
@@ -40,7 +42,7 @@ const Dashboard = ({ username, onResolveProblem }) => {
   // Handle Bio Update
   const handleBioSave = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${username}/profile`, {
+      const response = await fetch(`${API_BASE_URL}/users/${username}/profile`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ bio: bioInput })

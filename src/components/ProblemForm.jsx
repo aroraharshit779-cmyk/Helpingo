@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Send, MapPin, AlertCircle, HelpCircle } from 'lucide-react';
+import { API_BASE_URL } from '../config';
+
 
 export const ProblemForm = ({ onPost, problems = [], isOffline, currentUser, onOpenAuth }) => {
   const [formData, setFormData] = useState({ title: '', description: '', category: 'General' });
@@ -18,7 +20,7 @@ export const ProblemForm = ({ onPost, problems = [], isOffline, currentUser, onO
       if (!isOffline) {
         // Query the live server
         try {
-          const response = await fetch(`http://localhost:5000/api/problems/similar?title=${encodeURIComponent(titleQuery)}`);
+          const response = await fetch(`${API_BASE_URL}/problems/similar?title=${encodeURIComponent(titleQuery)}`);
           if (response.ok) {
             const data = await response.json();
             setSimilarProblems(data);

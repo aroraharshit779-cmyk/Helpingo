@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, Bot, Send, X, ShieldAlert } from 'lucide-react';
+import { API_BASE_URL } from '../config';
+
 
 const ChatModal = ({ isOpen, onClose, selectedProblem, isOffline }) => {
   const [activeTab, setActiveTab] = useState('ai'); // 'ai' or 'peer'
@@ -165,7 +167,7 @@ const ChatModal = ({ isOpen, onClose, selectedProblem, isOffline }) => {
       // Query the Express Server AI endpoint
       if (!isOffline) {
         try {
-          const response = await fetch('http://localhost:5000/api/chat/ai', {
+          const response = await fetch(`${API_BASE_URL}/chat/ai`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

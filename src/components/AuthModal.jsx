@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, User, Lock, Mail, RotateCw, ShieldCheck, AlertCircle, FileText } from 'lucide-react';
+import { API_BASE_URL } from '../config';
+
 
 const CAPTCHA_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // Excludes confusing characters like 0, O, 1, I
 
@@ -69,12 +71,12 @@ const AuthModal = ({ isOpen, onClose, onLoginSuccess }) => {
     setLoading(true);
 
     try {
-      const endpoint = isRegister ? '/api/auth/register' : '/api/auth/login';
+      const endpoint = isRegister ? '/auth/register' : '/auth/login';
       const bodyData = isRegister 
         ? { username: formData.username, email: formData.email, password: formData.password, bio: formData.bio }
         : { username: formData.username, password: formData.password };
 
-      const response = await fetch(`http://localhost:5000${endpoint}`, {
+      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(bodyData)

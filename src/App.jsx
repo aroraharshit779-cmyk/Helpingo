@@ -8,8 +8,8 @@ import AuthModal from './components/AuthModal';
 import Dashboard from './components/Dashboard';
 import { Bot, MessageSquare } from 'lucide-react';
 import './App.css';
+import { API_BASE_URL } from './config';
 
-const API_BASE_URL = 'http://localhost:5000/api';
 
 // Distance calculation utility (Haversine formula)
 const calculateDistance = (lat1, lon1, lat2, lon2) => {
