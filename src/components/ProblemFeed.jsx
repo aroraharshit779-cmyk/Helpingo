@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { 
   CheckCircle2, 
-  MessageSquare, 
   Clock, 
-  Bot, 
   ThumbsUp, 
   UserCheck, 
   Plus, 
-  Send, 
   AlertTriangle 
 } from 'lucide-react';
 
@@ -19,7 +16,6 @@ const ProblemFeed = ({
   onResolve, 
   onAddSolution,
   onUpvoteSolution,
-  onOpenChat,
   currentUser,
   onOpenAuth
 }) => {
@@ -148,7 +144,7 @@ const ProblemFeed = ({
               <h3 className="problem-card-title">{prob.title}</h3>
               <p className="problem-card-description">{prob.description}</p>
 
-              {/* Footer Row: Timestamp & Chat Actions */}
+              {/* Footer Row: Timestamp & Actions */}
               <div className="problem-card-actions">
                 <small className="problem-card-time">
                   <Clock size={12} /> 
@@ -156,26 +152,6 @@ const ProblemFeed = ({
                 </small>
 
                 <div className="card-action-group">
-                  {/* AI Agent Chat Trigger */}
-                  <button 
-                    className="btn-icon-label" 
-                    onClick={() => onOpenChat(prob, 'ai')}
-                    title="Ask AI Coordinator for guidance"
-                  >
-                    <Bot size={14} style={{ color: 'var(--secondary)' }} />
-                    <span>AI Advise</span>
-                  </button>
-
-                  {/* Peer Chat Trigger */}
-                  <button 
-                    className="btn-icon-label" 
-                    onClick={() => onOpenChat(prob, 'peer')}
-                    title="Coordinate chat session with neighbors"
-                  >
-                    <MessageSquare size={14} style={{ color: 'var(--primary)' }} />
-                    <span>Peer Chat</span>
-                  </button>
-                  
                   {/* Resolution Button */}
                   {prob.status !== 'Resolved' && currentUser && (prob.author === currentUser.username || currentUser.username === 'Dev Rawat') && (
                     <button 
@@ -202,32 +178,25 @@ const ProblemFeed = ({
                   {prob.solutions && prob.solutions.map((sol) => (
                     <div 
                       key={sol.id} 
-                      className={`solution-bubble ${sol.isAI ? 'solution-bubble-ai' : ''}`}
+                      className="solution-bubble"
                     >
                       <div className="solution-content">
                         <div className="solution-author">
-                          {sol.isAI ? (
-                            <>
-                              <Bot size={12} style={{ color: 'var(--secondary)' }} />
-                              <span>Helpingo AI Coordinator</span>
-                            </>
-                          ) : (
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                              <div className="avatar-mini-circle solution">
-                                {sol.author ? sol.author[0].toUpperCase() : 'U'}
-                                <span 
-                                  className="avatar-status-dot micro" 
-                                  style={{ backgroundColor: getStatusColor(sol.authorStatus || 'online') }}
-                                />
-                              </div>
-                              <span style={{ fontWeight: 700 }}>{sol.author}</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <div className="avatar-mini-circle solution">
+                              {sol.author ? sol.author[0].toUpperCase() : 'U'}
+                              <span 
+                                className="avatar-status-dot micro" 
+                                style={{ backgroundColor: getStatusColor(sol.authorStatus || 'online') }}
+                              />
                             </div>
-                          )}
+                            <span style={{ fontWeight: 700 }}>{sol.author}</span>
+                          </div>
                           <span style={{ fontSize: '0.6rem', color: 'var(--text-muted)', fontWeight: 400, marginLeft: '6px' }}>
                             {sol.timestamp ? new Date(sol.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}
                           </span>
                         </div>
-                        <div className="solution-text" style={{ paddingLeft: sol.isAI ? '0' : '22px' }}>{sol.text}</div>
+                        <div className="solution-text" style={{ paddingLeft: '22px' }}>{sol.text}</div>
                       </div>
 
                       {/* Solution Upvotes */}

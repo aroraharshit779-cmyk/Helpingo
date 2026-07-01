@@ -3,10 +3,8 @@ import Header from './components/Header';
 import InteractiveMap from './components/InteractiveMap';
 import ProblemForm from './components/ProblemForm';
 import ProblemFeed from './components/ProblemFeed';
-import ChatModal from './components/ChatModal';
 import AuthModal from './components/AuthModal';
 import Dashboard from './components/Dashboard';
-import { Bot, MessageSquare } from 'lucide-react';
 import './App.css';
 import { API_BASE_URL } from './config';
 
@@ -72,8 +70,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isOffline, setIsOffline] = useState(false);
   const [isLightTheme, setIsLightTheme] = useState(false);
-  const [isChatOpen, setIsChatOpen] = useState(false);
-  const [selectedProblemForChat, setSelectedProblemForChat] = useState(null);
   
   // Ref to track if we have already queued sync items
   const [syncQueue, setSyncQueue] = useState([]);
@@ -523,12 +519,7 @@ function App() {
     }
   };
 
-  // Open Chat Trigger
-  const handleOpenChat = (problem, tab) => {
-    setSelectedProblemForChat(problem);
-    setIsChatOpen(true);
-    // Timeout gives the DOM a frame to load the drawer, scroll element is handled in ChatModal
-  };
+
 
   return (
     <div className="app-container">
@@ -571,23 +562,7 @@ function App() {
             onOpenAuth={() => setAuthModalOpen(true)}
           />
 
-          {/* Quick AI Advisor Launchpad Card */}
-          <div className="card-glass" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <h3 className="card-title" style={{ fontSize: '1rem', marginBottom: 0 }}>
-              <Bot size={18} style={{ color: 'var(--secondary)' }} />
-              Helpingo Assistant
-            </h3>
-            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-              Get instant suggestions on handling safety steps or volunteer coordination for local complaints.
-            </p>
-            <button 
-              className="btn-primary" 
-              onClick={() => handleOpenChat(null, 'ai')}
-              style={{ justifyContent: 'center' }}
-            >
-              <Bot size={16} /> Let's Consult AI
-            </button>
-          </div>
+
 
         </section>
 
@@ -614,7 +589,6 @@ function App() {
               onResolve={handleResolveProblem}
               onAddSolution={handleAddSolution}
               onUpvoteSolution={handleUpvoteSolution}
-              onOpenChat={handleOpenChat}
               currentUser={currentUser}
               onOpenAuth={() => setAuthModalOpen(true)}
             />
@@ -630,24 +604,7 @@ function App() {
         )}
       </main>
 
-      {/* Unified Chat Drawer Toggle Trigger */}
-      {!isChatOpen && (
-        <button 
-          className="floating-chat-trigger animate-bounce" 
-          onClick={() => handleOpenChat(null, 'ai')}
-          title="Open Helpingo Chatbot"
-        >
-          <MessageSquare size={24} />
-        </button>
-      )}
 
-      {/* Sliding Chat Drawer Component */}
-      <ChatModal 
-        isOpen={isChatOpen}
-        onClose={() => setIsChatOpen(false)}
-        selectedProblem={selectedProblemForChat}
-        isOffline={isOffline}
-      />
 
       {/* Auth Portal Modal Dialog */}
       <AuthModal
